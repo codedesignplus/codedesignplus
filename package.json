@@ -1,0 +1,93 @@
+{
+  "name": "codedesignplus",
+  "displayName": "CodeDesignPlus",
+  "description": "Generator Microservices and Resources",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codedesignplus.aggregate",
+        "title": "CodeDesignPlus: Add Aggregate"
+      },
+      {
+        "command": "codedesignplus.entity",
+        "title": "CodeDesignPlus: Add Entity"
+      },
+      {
+        "command": "codedesignplus.valueObject",
+        "title": "CodeDesignPlus: Add Value Objects"
+      },
+      {
+        "command": "codedesignplus.domainEvents",
+        "title": "CodeDesignPlus: Add Domain Events"
+      },
+      {
+        "command": "codedesignplus.repository",
+        "title": "CodeDesignPlus: Add Repository"
+      },
+      {
+        "command": "codedesignplus.controller",
+        "title": "CodeDesignPlus: Add Controller"
+      },
+      {
+        "command": "codedesignplus.proto",
+        "title": "CodeDesignPlus: Add Proto"
+      },
+      {
+        "command": "codedesignplus.query",
+        "title": "CodeDesignPlus: Add Queries"
+      },
+      {
+        "command": "codedesignplus.dtos",
+        "title": "CodeDesignPlus: Add Data Transfer Objects"
+      },
+      {
+        "command": "codedesignplus.command",
+        "title": "CodeDesignPlus: Add Commands"
+      },
+      {
+        "command": "codedesignplus.consumers",
+        "title": "CodeDesignPlus: Add Consumers"
+      }
+      
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.99.0",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.25.1",
+    "eslint": "^9.23.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "glob": "^11.0.1"
+  }
+}
