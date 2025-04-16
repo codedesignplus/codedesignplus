@@ -1,71 +1,80 @@
-# codedesignplus README
+# CodeDesignPlus Microservices Net
 
-This is the README for your extension "codedesignplus". After writing up a brief description, we recommend including the following sections.
+**CodeDesignPlus Microservices Net** is a Visual Studio Code extension that provides tools to help you design microservices in .NET. This extension leverages the [CodeDesignPlus Generator](https://www.codedesignplus.com/generators/) to streamline the creation of various components such as aggregates, entities, value objects, domain events, repositories, controllers, protos, queries, DTOs, commands, and consumers.
+
+Each command is fully documented in the [CodeDesignPlus Microservice Generator Documentation](https://www.codedesignplus.com/generators/microservice/).
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension includes the following commands:
 
-For example if there is an image subfolder under your extension project workspace:
+- **CodeDesignPlus: Add Aggregate**: Generate a new aggregate.
+- **CodeDesignPlus: Add Entity**: Generate a new entity.
+- **CodeDesignPlus: Add Value Objects**: Generate new value objects.
+- **CodeDesignPlus: Add Domain Events**: Generate new domain events.
+- **CodeDesignPlus: Add Repository**: Generate a new repository.
+- **CodeDesignPlus: Add Controller**: Generate a new controller.
+- **CodeDesignPlus: Add Proto**: Generate a new proto file.
+- **CodeDesignPlus: Add Queries**: Generate new queries.
+- **CodeDesignPlus: Add Data Transfer Objects**: Generate new DTOs.
+- **CodeDesignPlus: Add Commands**: Generate new commands.
+- **CodeDesignPlus: Add Consumers**: Generate new consumers.
 
-\!\[feature X\]\(images/feature-x.png\)
+## Prerequisites
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+This extension requires the [CodeDesignPlus Generator](https://www.codedesignplus.com/generators/) to be installed. Follow the installation guide provided in the [official documentation](https://www.codedesignplus.com/generators/).
 
-## Requirements
+## Installation
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Install [Visual Studio Code](https://code.visualstudio.com/).
+2. Open the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X` on Mac).
+3. Search for **CodeDesignPlus Microservices Net** and install the extension.
+4. Ensure the [CodeDesignPlus Generator](https://www.codedesignplus.com/generators/) is installed on your system.
 
-## Extension Settings
+## Usage
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+1. Open the **Command Palette** (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
+2. Search for one of the commands, such as `CodeDesignPlus: Add Aggregate`.
+3. Follow the prompts to generate the desired component.
+4. The extension will execute the corresponding generator command in the terminal.
 
-For example:
+## Development
 
-This extension contributes the following settings:
+### Setting Up the Environment
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. Clone this repository.
+2. Run `npm install` to install dependencies.
+3. Compile the project with `npm run compile`.
 
-## Known Issues
+### Available Scripts
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- `npm run watch`: Watch for changes and recompile automatically.
+- `npm run lint`: Run ESLint to check for code style issues.
+- `npm run test`: Run tests for the extension.
 
-## Release Notes
+### Debugging
 
-Users appreciate release notes as you update your extension.
+1. Press `F5` to launch a new instance of Visual Studio Code with the extension loaded.
+2. Set breakpoints in `src/extension.ts` to debug the extension.
+3. Use the Debug Console to view logs.
 
-### 1.0.0
+## Documentation
 
-Initial release of ...
+For detailed documentation on each command, visit the [CodeDesignPlus Microservice Generator Documentation](https://www.codedesignplus.com/generators/microservice/).
 
-### 1.0.1
+## Publishing
 
-Fixed issue #.
+1. Reduce the extension size and improve startup time by [bundling the extension](https://code.visualstudio.com/api/working-with-extensions/bundling-extension).
+2. Publish the extension to the [Visual Studio Code Marketplace](https://code.visualstudio.com/api/working-with-extensions/publishing-extension).
 
-### 1.1.0
+## Contributing
 
-Added features X, Y, and Z.
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## License
+
+Refer to the license in the repository.
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Thank you for using **CodeDesignPlus Microservices Net**!

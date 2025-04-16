@@ -1,0 +1,62 @@
+name: Build Extension
+
+on:
+  push:
+    branches:
+      - main
+      - rc
+      - dev
+      - feature/*
+  workflow_dispatch:
+
+env:
+    IS_RELEASE: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
+    IS_RC: ${{ github.ref == 'refs/heads/rc' }}
+    IS_BETA: ${{ github.ref == 'refs/heads/dev' }}
+    PROJECT: 'CodeDesignPlus.Net.Microservice'
+
+  permissions:
+    contents: write
+    packages: write
+    repository-projects: write
+    
+  jobs:
+    build:
+      name: Build
+      runs-on: ubuntu-latest
+      environment: Dev
+      
+      steps:
+        # Checkout the repository
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+
+        # Set up Node.js
+        - name: Set up Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: '18'
+            cache: 'pnpm'
+
+        # Install pnpm
+        - name: Install pnpm
+          uses: pnpm/action-setup@v4
+          with:
+            version: 8
+
+        # Install dependencies
+        - name: Install dependencies
+          run: pnpm install
+
+        # Build the extension
+        - name: Build the extension
+          run: pnpm run package
+
+        # Publish to VS Code Marketplace
+        - name: Publish to VS Code Marketplace
+          env:
+            VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          run: |
+            npx vsce publish
