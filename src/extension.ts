@@ -154,7 +154,7 @@ function domainEvents(context: vscode.ExtensionContext) {
 
 		const terminal = vscode.window.createTerminal('CodeDesignPlus');
 		terminal.show();
-		terminal.sendText(`yo codedesignplus:microservice domainEvents --aggregate "${aggregate}"  --domainEvents "${domainEvent}"`);
+		terminal.sendText(`yo codedesignplus:microservice domainEvent --aggregate "${aggregate}"  --domainEvents "${domainEvent}"`);
 
 	});
 	context.subscriptions.push(disposable);
@@ -250,7 +250,7 @@ function proto(context: vscode.ExtensionContext) {
 function query(context: vscode.ExtensionContext) {
 	const disposable = vscode.commands.registerCommand('codedesignplus.query', async () => {
 		const aggregates = await scanFiles('*Aggregate.cs');
-		const repositories = await scanFiles('*Repository.cs');
+		const repositories = await scanFiles('I*Repository.cs');
 
 		const aggregate = await vscode.window.showQuickPick(aggregates, {
 			placeHolder: 'Select an aggregate to add a query to',
@@ -486,7 +486,14 @@ async function scanFiles(pattern: string): Promise<string[]> {
 		const aggregates = await glob(`src/**/*${pattern}`, { cwd: dir, ignore: ['bin/**', 'obj/**'] });
 
 		const files = aggregates.map(f => {
-			return path.basename(f).replace(/\Aggregate.cs$/, '');
+
+			const isRepository = f.includes('Repository');
+
+			if (isRepository) {
+				return path.basename(f).replace(/Repository.cs$/, '').slice(1);
+			}
+
+			return path.basename(f).replace(/Aggregate.cs$/, '');
 		});
 
 		return files;
